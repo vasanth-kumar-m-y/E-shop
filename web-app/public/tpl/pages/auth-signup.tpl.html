@@ -1,0 +1,107 @@
+<ng-include class="main-head" src="'tpl/layout/main-head.tpl.html'"></ng-include>
+
+<div class="row">
+    <div class='col-md-4 col-md-offset-4'>
+
+        <form name="form" novalidate >
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                <h2>SignUp</h2>
+
+                    <!-- username -->
+
+                    <div class="form-group" 
+                         ng-class="{'has-error': isInvalid(form.username, page.api.errors)}"
+                    >
+                        <label for="username" class="control-label"> Username </label>
+                        <input ng-model="page.inputs.username" required  name="username" type="text" class="form-control" placeholder="Username"/>
+
+                        <div ng-show="form.$submitted || form.username.$touched">
+                            <p ng-show="form.username.$error.required" class="help-block">This field is required</p>
+                            <p ng-repeat="error in page.api.errors.username" class="help-block">{{error}}</p> 
+                        </div>                        
+                    </div> 
+
+                    <!-- Email -->
+                    
+                    <div class="form-group" 
+                         ng-class="{'has-error': isInvalid(form.email, page.api.errors)}"
+                    >
+                        <label for="inputEmail" class="control-label"> Email </label>
+                        <input ng-model="page.inputs.email" required  name="email" type="email" class="form-control" placeholder="Email"/>
+
+                        <div ng-show="form.$submitted || form.email.$touched">
+                            <p ng-show="form.email.$error.required" class="help-block">This field is required</p>
+                            <p ng-show="form.email.$error.email" class="help-block">Not valid email</p>              
+                            <p ng-repeat="error in page.api.errors.email"class="help-block">{{error}}</p>                       
+                        </div>                        
+                    </div> 
+
+                    <!-- first_name -->
+
+                    <div class="form-group" 
+                         ng-class="{'has-error': isInvalid(form.first_name, page.api.errors)}"
+                    >
+                        <label for="inputfirst_name" class="control-label"> First name </label>
+                        <input ng-model="page.inputs.first_name" required  name="first_name" type="text" class="form-control" placeholder="First name"/>
+
+                        <div ng-show="form.$submitted || form.first_name.$touched">
+                            <p ng-show="form.first_name.$error.required" class="help-block">This field is required</p>                          
+                            <p ng-repeat="error in page.api.errors.first_name"class="help-block">{{error}}</p>                        
+                        </div>                        
+                    </div> 
+
+                    <!-- last_name -->
+
+                    <div class="form-group" 
+                         ng-class="{'has-error': isInvalid(form.last_name, page.api.errors) }"
+                    >
+                        <label for="inputlast_name" class="control-label"> Last name </label>
+                        <input ng-model="page.inputs.last_name" required  name="last_name" type="text" class="form-control" placeholder="Last name"/>
+
+                        <div ng-show="form.$submitted || form.last_name.$touched">
+                            <p ng-show="form.last_name.$error.required" class="help-block">This field is required</p>                          
+                            <p ng-repeat="error in page.api.errors.last_name"class="help-block">{{error}}</p>                           
+                        </div>                        
+                    </div>                     
+
+                    <!-- Password -->
+                    
+                    <div class="form-group" 
+                         ng-class="{'has-error': isInvalid(form.password, page.api.errors)}"
+                    >
+                        <label for="inputPassword" class="control-label"> Password </label>
+                        <input ng-model="page.inputs.password" required  name="password" type="password" class="form-control" placeholder="Password"/>
+
+                        <div ng-show="form.$submitted || form.password.$touched">
+                            <p ng-show="form.password.$error.required" class="help-block">This field is required</p>                          
+                            <p ng-repeat="error in page.api.errors.password"class="help-block">{{error}}</p>                           
+                        </div>                        
+                    </div> 
+
+                    <!-- PasswordConfirm -->
+                    
+                    <div class="form-group" 
+                         ng-class="{'has-error': isInvalid(form.password_confirmation, page.api.errors)}"
+                    >
+                        <label for="inputpassword_confirmation" class="control-label"> Password Confirmation</label>
+                        <input ng-model="page.inputs.password_confirmation" required  name="password_confirmation" type="password" class="form-control" placeholder="Password"/>
+
+                        <div ng-show="form.$submitted || form.password_confirmation.$touched">
+                            <p ng-show="form.password_confirmation.$error.required" class="help-block">This field is required</p>                          
+                            <p ng-repeat="error in page.api.errors.password_confirmation"class="help-block">{{error}}</p>                               
+                        </div>                        
+                    </div> 
+
+                    <div class="form-group submitBtn">
+                          <button ng-disabled="form.$invalid" ng-click="page.signup()" type="submit" class="btn btn-lg btn-warning">SignUp</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>

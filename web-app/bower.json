@@ -1,0 +1,25 @@
+{
+  "name": "quickstart-laravel.local",
+  "description": "Testing laravel with angularJs",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-mocks": "1.4.x",
+    "jquery": "~2.1.x",
+    "jquery-ui" : "1.10.x",
+    "bootstrap": "~3.1.1",
+    "angular-route": "1.4.x",
+    "angular-resource": "1.4.x",
+    "angular-animate": "1.4.x",
+    "angular-cookies" : "1.4.x",
+    "angular-sanitize": "~1.4.x",
+    "angular-flash-alert": "1.1.x",
+    "blueimp-gallery-with-desc": "2.16.x",
+    "tinymce-dist" : "4.3.2",
+    "tag-it" : "https://github.com/aehlke/tag-it.git#6ccd2de95e",
+    "angular-ui-bootstrap-bower" : "1.0.x",
+    "angular-scroll" : "1.x"
+
+  }
+}

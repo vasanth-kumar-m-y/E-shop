@@ -1,0 +1,181 @@
+<ng-include class="main-head" src="'tpl/layout/main-head.tpl.html'"></ng-include>
+
+<div class='col-md-10 col-md-offset-1'>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+            <a showtab href="#basic" aria-controls="basic" role="tab" data-toggle="tab">
+                Basic
+            </a>
+        </li>
+        <li role="presentation">
+            <a showtab href="#password" aria-controls="password" role="tab" data-toggle="tab">
+                Password
+            </a>
+        </li>
+    </ul>
+
+
+
+        <!-- Tab panes -->
+    <div class="tab-content">
+
+        <!-- panel basic -->
+
+        <div role="tabpanel" class="tab-pane active" id="basic">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <form class="form-horizontal" name="form">
+
+                        <h2 class="col-sm-offset-1 form-title">
+                            User Settings
+                        </h2>
+
+                        <!-- username -->
+
+                        <div class="form-group">
+                            <label for="inputUsername" class="col-sm-2 control-label">
+                                Username
+                            </label>
+                            <div class="col-sm-9">
+                                <input readonly="readonly" type="text" class="form-control" id="inputUsername" placeholder="username" ng-model="page.user.username"/>                             
+                            </div>
+                        </div>
+
+                        <!-- first Name -->
+                        
+                        <div class="form-group"  ng-class="{'has-error': isInvalid(form.first_name, page.api.errors.basic)}"
+                    >
+                            <label for="inputFirstName" class="col-sm-2 control-label">
+                                First Name
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" required name="first_name" ng-model="page.user.first_name"/>
+
+                                <div ng-show="form.$submitted || form.first_name.$touched">
+                                    <p ng-show="form.first_name.$error.required" class="help-block">This field is required</p>
+                                    <p ng-repeat="error in page.api.errors.basic.first_name" class="help-block">{{error}}</p> 
+                                </div>   
+                            </div>
+                        </div>                    
+
+                        <!-- Second Name -->
+                        
+                        <div class="form-group" ng-class="{'has-error': isInvalid(form.last_name, page.api.errors.basic)}">
+                            <label for="inputSecondName" class="col-sm-2 control-label">
+                                Second Name
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputSecondName" placeholder="Second Name" required name="last_name" ng-model="page.user.last_name"/>
+
+                                <div ng-show="form.$submitted || form.last_name.$touched">
+                                    <p ng-show="form.last_name.$error.required" class="help-block">This field is required</p>
+                                    <p ng-repeat="error in page.api.errors.basic.last_name" class="help-block">{{error}}</p> 
+                                </div>                                 
+                            </div>
+                        </div> 
+
+                        <!-- Email -->
+                        
+                        <div class="form-group" ng-class="{'has-error': isInvalid(form.email, page.api.errors.basic)}">
+                            <label for="inputEmail" class="col-sm-2 control-label">
+                                    Email
+                            </label>
+                            <div class="col-sm-9">
+                                <input  type="text" class="form-control" id="inputEmail" placeholder="Email" email required name="email" ng-model="page.user.email"/>
+
+                                <div ng-show="form.$submitted || form.email.$touched">
+                                    <p ng-show="form.email.$error.required" class="help-block">This field is required</p>
+                                    <p ng-show="form.email.$error.email" class="help-block">This field is required</p>                                    
+                                    <p ng-repeat="error in page.api.errors.basic.email" class="help-block">{{error}}</p> 
+                                </div>                                  
+                            </div>
+                        </div> 
+
+                        <!-- Phone -->
+                        
+                        <div class="form-group" ng-class="{'has-error': isInvalid(form.phone, page.api.errors.basic)}">
+                            <label for="inputPhone" class="col-sm-2 control-label"> Phone </label>
+                            <div class="col-sm-9">
+                                <input  type="text" class="form-control" id="inputPhone" placeholder="Phone" required name="phone" ng-model="page.user.phone"/>
+
+                                <div ng-show="form.$submitted || form.phone.$touched">
+                                    <p ng-show="form.phone.$error.required" class="help-block">This field is required</p>
+                                    <p ng-repeat="error in page.api.errors.basic.phone" class="help-block">{{error}}</p> 
+                                </div>                                  
+                            </div>
+                        </div> 
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                              <button ng-click="page.save()" type="button" class="btn btn-lg btn-primary">Save</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- panel more -->
+
+        <div role="tabpanel" class="tab-pane" id="password">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <form class="form-horizontal" name="formPassword">
+
+                        <h2 class="col-sm-offset-1 form-title">
+                            Change Password
+                        </h2>
+
+                        <!-- Password -->
+                        
+                        <div class="form-group" ng-class="{'has-error': isInvalid(formPassword.password, page.api.errors.security)}">
+                            <label for="inputPassword" class="col-sm-2 control-label">
+                                    Password
+                            </label>
+                            <div class="col-sm-9">
+                                <input  type="password" name="password" class="form-control" id="inputPassword" ng-model="page.security.password" placeholder="Password"/>
+
+                                <div ng-show="formPassword.$submitted || formPassword.password.$touched">
+                                    <p ng-repeat="error in page.api.errors.security.password" class="help-block">{{error}}</p> 
+                                </div>                                  
+                            </div>
+                        </div> 
+
+                        <!-- PasswordConfirm -->
+                        
+                        <div class="form-group" ng-class="{'has-error': isInvalid(formPassword.password_confirmation, page.api.errors.security.password_confirmation)}">
+                            <label for="inputPasswordConfirm" class="col-sm-2 control-label">
+                                    Password Confirm
+                            </label>
+                            <div class="col-sm-9">
+                                <input  ng-model="page.security.password_confirm" type="password" name="password_confirmation" class="form-control" id="inputPasswordConfirm" placeholder="Password_confirm"/>
+
+                                <div ng-show="formPassword.$submitted || formPassword.security.$touched">
+                                    <p ng-repeat="error in page.api.errors.security.password_confirmation" class="help-block">{{error}}</p> 
+                                </div> 
+                            </div>
+                        </div> 
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                              <button type="button" ng-click="page.changePassword()" class="btn btn-lg btn-primary">Change Password</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- end panel more -->
+    </div>
+
+</div>

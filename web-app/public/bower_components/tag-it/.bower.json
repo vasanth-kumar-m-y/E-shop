@@ -1,0 +1,12 @@
+{
+  "name": "tag-it",
+  "homepage": "https://github.com/aehlke/tag-it",
+  "_release": "6ccd2de95e",
+  "_resolution": {
+    "type": "commit",
+    "commit": "6ccd2de95e"
+  },
+  "_source": "https://github.com/aehlke/tag-it.git",
+  "_target": "6ccd2de95e",
+  "_originalSource": "https://github.com/aehlke/tag-it.git"
+}

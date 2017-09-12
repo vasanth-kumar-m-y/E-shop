@@ -1,0 +1,81 @@
+<div ng-show="auth.isLogged()">
+
+<ng-include class="main-head" src="'tpl/layout/main-head.tpl.html'" ></ng-include>
+
+<a href="#/product/create" ng-show="auth.getUser().role == 'admin'" class="btn btn-success">
+	<span class="glyphicon glyphicon-plus" title="Create" aria-hidden="true">
+	</span>
+	Create Product
+</a>
+
+<div class="row" class="products-list" >
+	<div class="col-sm-12 col-lg-8 col-md-9 col-md-push-2">
+
+		<div id="results">
+
+			<!-- product -->
+
+	        <div ng-repeat="item in layout.pagination.items" class="product panel panel-default">
+	            <div class="panel-body">
+
+		        	<div class="col-sm-9 col-sm-push-3">
+			        	<div class="title"><a href="#/product/{{ item.id }}">{{ item.title }}</a></div>
+			        	<div class='subtitle'>{{ item.subtitle }}</div>
+			        	<div class="price">${{ item.price }}</div>
+		                <div class="more-info">
+				           	<div class='seller hidden-xs'><strong>Started: </strong><span class="value">{{ item.starts }}</span></div>
+				           	<div class='date-start hidden-xs'><strong>End: </strong><span class="value">{{ item.ends }}</span></div>
+				           	<div class='seller '><strong>Seller: </strong><span class="value"><a href="#/user/{{ item.seller.id }}">{{ item.seller.username || 'you' }}</a></span></div>
+			           	</div>
+		        	</div>
+					<div class="col-sm-3 col-sm-pull-9 hidden-xs photoCont">
+						<a href="#/product/{{ item.id }}">
+		        			<img ng-src="{{ layout.getProductImage(item.id) }}" class="img-responsive photo" alt="Responsive image">
+		        		</a>
+		        	</div>
+
+	           		<div class="actions" >
+
+						<a ng-show="item.seller_id != auth.getUser().user.id" type="button" class="btn btn-cart btn-default" ng-class="{'btn-cart-active' : item.cart }" ng-click="layout.addToCart(item, 1)">
+	                    	<span class="glyphicon glyphicon-shopping-cart" title="Add To Cart" aria-hidden="true">
+	                    	</span>
+	                	</a>
+           				<a href="#/product/{{item.id}}/edit" ng-show="item.seller_id == auth.getUser().user.id" class="btn btn-default">
+	                    	<span class="glyphicon glyphicon-pencil" title="Edit" aria-hidden="true">
+	                    	</span>
+	                	</a>
+	                	<a ng-show="item.seller_id == auth.getUser().user.id" class="btn btn-default" ng-click="layout.deleteProduct(item)">
+	                    	<span class="glyphicon glyphicon-trash" title="Delete" aria-hidden="true">
+	                    	</span>
+	                	</a>
+	                	<a ng-show="item.seller_id == auth.getUser().user.id" class="btn btn-default btn-isActive" type="button" ng-class="{'btn-off' : !item.is_active}"
+	                	 ng-click="layout.toggleActive(item)">
+	                    	<span class="glyphicon glyphicon-off" title="{{ !item.is_active ? 'Active' : 'In Active'}}"  aria-hidden="true">
+	                    	</span>
+	                	</a>         	               		
+	                </div>		        	
+	            </div>
+	        </div>
+
+	        <!-- end product -->
+
+	    </div>
+
+	    <!-- end results -->
+
+		<uib-pagination direction-links="false" boundary-links="true" total-items="layout.pagination.totalItems" ng-model="layout.pagination.currentPage" ></uib-pagination>
+
+	</div>
+</div>
+
+</div>
+
+<div ng-hide="auth.isLogged()" align="center">
+<h1 style="font-size:60px;">E shop</h1>
+<h1>
+   <a href="#/auth/login">
+   <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+       Click Here To Login
+   </a>
+</h1>
+</div>

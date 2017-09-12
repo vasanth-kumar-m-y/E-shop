@@ -1,0 +1,65 @@
+<div ng-show="auth.getUser().role == 'admin'">
+
+<ng-include class="main-head" src="'tpl/layout/main-head.tpl.html'" ></ng-include>
+
+<a href="#/admin/user/create"  class="btn btn-success">
+	<span class="glyphicon glyphicon-plus" title="Create" aria-hidden="true">
+	</span>
+	Create User
+</a>
+
+<div class="row" class="users-list" >
+	<div class="col-sm-12 col-lg-8 col-md-9 col-md-push-2">
+
+		<div id="results">
+
+			<!-- users -->
+
+	        <div ng-repeat="item in layout.pagination.items" class="product panel panel-default" ng-if="item.id != auth.getUser().user.id">
+	            <div class="panel-body" >
+
+		        	<div class="col-sm-9 col-sm-push-3">
+			        	<div class="title">{{ item.username }}</div>
+			        	<div class="more-info">
+				           	<div class='seller hidden-xs'><strong>First Name: </strong><span class="value">{{ item.first_name }}</span></div>
+				           	<div class='date-start hidden-xs'><strong>Last Name: </strong><span class="value">{{ item.last_name }}</span></div>
+			           	</div>
+		        	</div>
+					
+	           		<div class="actions" >
+
+           				<a href="#/admin/users/{{item.id}}/edit" class="btn btn-default">
+	                    	<span class="glyphicon glyphicon-pencil" title="Edit" aria-hidden="true">
+	                    	</span>
+	                	</a>
+	                	<a class="btn btn-default" ng-click="layout.deleteProduct(item.id)">
+	                    	<span class="glyphicon glyphicon-trash" title="Delete" aria-hidden="true">
+	                    	</span>
+	                	</a>
+        	               		
+	                </div>		        	
+	            </div>
+	        </div>
+
+	        <!-- end users -->
+
+	    </div>
+
+	    <!-- end results -->
+
+		<uib-pagination direction-links="false" boundary-links="true" total-items="layout.pagination.totalItems" ng-model="layout.pagination.currentPage" ></uib-pagination>
+
+	</div>
+</div>
+
+</div>
+
+<div ng-hide="auth.isLogged()" align="center">
+<h1 style="font-size:60px;">LandMark Ecommerce</h1>
+<h1>
+   <a href="#/auth/login">
+   <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+       Click Here To Login
+   </a>
+</h1>
+</div>

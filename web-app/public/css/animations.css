@@ -1,0 +1,22 @@
+
+.page.ng-enter {
+       animation: moveFromRightFade.7s ease both;
+}
+
+.page.ng-leave  {
+       animation: moveToLeftFade .7s ease both;
+}
+/*
+.page.ng-enter {
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    -webkit-animation: rotatePullTop .5s both ease;
+    animation: rotatePullTop .5s both ease;
+}
+.page.ng-leave  {
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    -webkit-animation: rotatePushBottom .8s both ease;
+    animation: rotatePushBottom .8s both ease;
+}
+*/

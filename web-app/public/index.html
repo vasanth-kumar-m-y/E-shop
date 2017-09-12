@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" ng-app="app" ng-controller="MainController as main">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title> E shop </title>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+        <link rel="stylesheet" href="/css/app.css"/>
+        <link rel="stylesheet" href="/css/animations-list.css"/>
+        <link rel="stylesheet" href="/css/animations.css"/>
+        <link href='https://fonts.googleapis.com/css?family=Fredoka+One|Comfortaa' rel='stylesheet' type='text/css'/>
+    </head>
+    <body>
+        <div id="flash" flash-message="4000"></div>
+        <div id="loading" ng-show="layout.loading"></div> 
+        <div class="container">
+            <header class="row">
+                <ng-include src="'/tpl/layout/header.tpl.html'"></ng-include>
+            </header>
+            <div id="main">           
+                <div id="main-pages"> 
+                    <div class="page {{ layout.page.className }}" ng-view ></div>
+            	</div>
+            </div>
+        </div>
+
+        <script src="/bower_components/jquery/dist/jquery.js"> </script>
+        <script src="/bower_components/jquery-ui/ui/minified/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script> 
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.js"> </script>
+        <script src="/bower_components/angular/angular.js"> </script>
+        <script src="/bower_components/angular-animate/angular-animate.js"> </script>
+        <script src="/bower_components/angular-route/angular-route.js"> </script>
+        <script src="/bower_components/angular-resource/angular-resource.js"> </script>
+        <script src="/bower_components/angular-cookies/angular-cookies.js"> </script>
+        
+        <script src="/bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
+        <script src="/bower_components/angular-ui-bootstrap-bower/ui-bootstrap.min.js"></script>
+
+        <script src="/bower_components/angular-scroll/angular-scroll.min.js"> </script>
+        <link href="/bower_components/angular-flash-alert/dist/angular-flash.min.css" type="text/css" rel="stylesheet"/>
+        <script src="/bower_components/angular-flash-alert/dist/angular-flash.min.js"></script>
+
+        <!-- module -->
+        <script src="/app/app.module.js"> </script>
+        <!-- services -->
+        <script src="/app/services/auth.service.js"></script>
+        <script src="/app/services/layout.service.js"></script>
+        <!-- controllers -->
+        <script src="/app/controllers/main.controller.js"> </script>
+        <script src="/app/controllers/auth/login.controller.js"></script>
+        <script src="/app/controllers/auth/signup.controller.js"></script>
+        <script src="/app/controllers/user/cart.controller.js"></script>
+        <script src="/app/controllers/user/user.all.controller.js"></script>
+        <script src="/app/controllers/user/user.edit.controller.js"></script>
+        <script src="/app/controllers/user/user.create.controller.js"></script>
+        <script src="/app/controllers/user/settings.controller.js"></script>
+        <script src="/app/controllers/product/create.controller.js"></script>
+        <script src="/app/controllers/product/edit.controller.js"></script>
+        <script src="/app/controllers/product/results.controller.js"></script>
+        <script src="/app/controllers/product/show.controller.js"></script>
+        <!-- filters -->
+        <script src="/app/filters/trustSafe.filter.js"></script>
+        <!-- directives -->
+        <script src="/app/directives/showtab.directive.js"></script>
+
+    </body>
+</html>
